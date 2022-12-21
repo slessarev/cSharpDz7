@@ -21,17 +21,17 @@ int[,] FillArray(int m, int n)
     return array;
 }
 
-void AverageLine(int[,] array)
+void AverageColumns(int[,] array)
 {
     Console.Write("Среднее арифметическое каждого столбца:");
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(1); i++)
     {
         double countLine = 0;
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(0); j++)
         {
-            countLine = countLine + array[i, j];
+            countLine = countLine + array[j, i];
         }
-        Console.Write(Math.Round(countLine / array.GetLength(1), 1) + ",   ");
+        Console.Write(Math.Round(countLine / array.GetLength(0), 1) + ",   ");
 
     }
 }
@@ -40,4 +40,4 @@ Console.Write("Введите число строк массива: ");
 int m = int.Parse(Console.ReadLine());
 Console.Write("Введите число столбцов массива: ");
 int n = int.Parse(Console.ReadLine());
-AverageLine(FillArray(m, n));
+AverageColumns(FillArray(m, n));
